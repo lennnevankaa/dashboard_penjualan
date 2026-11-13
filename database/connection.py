@@ -63,10 +63,16 @@ def _driver():
 
 
 def _url(database):
-    odbc = (
-        f"DRIVER={{{_driver()}}};SERVER={config.SERVER};DATABASE={database};"
-        "Trusted_Connection=yes;Encrypt=no;TrustServerCertificate=yes;"
-    )
+    odbc = f"DRIVER={{{_driver()}}};SERVER={config.SERVER};DATABASE={database};"
+    if not config.DB_PASSWORD:
+        raise RuntimeError(
+            "Password SQL belum dikonfigurasi. Atur environment variable DB_PASSWORD "
+            "sebelum menjalankan aplikasi."
+        )
+    username = "{" + config.DB_USERNAME.replace("}", "}}") + "}"
+    password = "{" + config.DB_PASSWORD.replace("}", "}}") + "}"
+    odbc += f"UID={username};PWD={password};"
+    odbc += "Encrypt=yes;TrustServerCertificate=no;"
     return "mssql+pyodbc:///?odbc_connect=" + quote_plus(odbc)
 
 
@@ -93,5 +99,6 @@ def init_schema():
 
 
 def init_db():
-    ensure_database()
+    if config.DB_AUTO_CREATE:
+        ensure_database()
     init_schema()

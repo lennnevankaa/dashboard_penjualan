@@ -1,11 +1,15 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = BASE_DIR / "data" / "uploads"
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-SERVER = r"LAPTOP-91FQO0RL\SQLEXPRESS"
-DATABASE = "HISTORY_DATA"
+SERVER = "db79693.public.databaseasp.net,1433"
+DATABASE = os.getenv("DB_DATABASE", "db79693")
+DB_USERNAME = os.getenv("DB_USERNAME") or "db79693"
+DB_PASSWORD = os.getenv("DB_PASSWORD", "sK@83!qD?gT5")
+DB_AUTO_CREATE = os.getenv("DB_AUTO_CREATE", "false").strip().lower() in {"1", "true", "yes"}
 
 # ---------------------------------------------------------------------------
 # Akun & hak akses
