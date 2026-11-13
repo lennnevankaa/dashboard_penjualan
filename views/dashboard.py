@@ -286,7 +286,8 @@ def kpi(label, value, sub="", value_color="#1E293B", bar=None):
 def render():
     layout.page_title("Dashboard Business Intelligence PT X")
 
-    f = filters.render("dash", inline=True)
+    with layout.card("dash_filters", "Filter Dashboard"):
+        f = filters.render("dash", inline=True)
     df = load(f)
     if df.empty:
         st.info("Belum ada data untuk filter ini.")
