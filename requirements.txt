@@ -1,0 +1,7 @@
+streamlit==1.66.1
+pandas
+numpy
+sqlalchemy
+pyodbc
+plotly
+openpyxl

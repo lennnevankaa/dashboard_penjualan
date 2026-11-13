@@ -1,0 +1,102 @@
+.block-container{padding-top:1.5rem;padding-bottom:2rem;max-width:1450px}
+header[data-testid="stHeader"]{background:transparent}
+
+/* [BARU] Latar halaman abu-abu lembut */
+[data-testid="stAppViewContainer"]{background:#EEF1F5}
+
+/* [UBAH] Judul halaman jadi banner */
+.page-title{text-align:center;font-size:1.6rem;font-weight:700;color:#1E293B;margin:0 0 1rem 0;padding:1rem;background:#E2E5EA;border-radius:10px}
+
+[data-testid="stSidebar"]{background:#1E293B}
+[data-testid="stSidebar"] *{color:#E2E8F0}
+.side-brand{font-size:1.05rem;font-weight:700;padding:.4rem .2rem 1rem .2rem;color:#fff}
+.side-spacer{height:42vh}
+.side-user{font-size:.78rem;color:#94A3B8;margin-bottom:.5rem}
+[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"]{border-radius:8px;padding:.55rem .75rem;margin-bottom:.15rem}
+[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"]:hover{background:#334155}
+[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"]{background:#6D41A1}
+.st-key-logout_btn button{background:#EF4444;border:none;width:100%;font-weight:600}
+.st-key-logout_btn button:hover{background:#DC2626}
+.st-key-logout_btn button p{color:#fff}
+
+[class*="st-key-card_"]{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:1rem 1.1rem;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+.card-title{font-weight:700;font-size:1.5rem;color:#1E293B;margin-bottom:.4rem}
+/* [BARU] Judul card dashboard lebih kecil agar proporsional */
+[class*="st-key-card_dash_"] .card-title{font-size:1.05rem}
+
+/* [UBAH] Label filter, dibatasi ke area utama supaya sidebar tidak ikut berubah */
+[data-testid="stMain"] [data-testid="stWidgetLabel"] p{
+  font-size:1.1rem;
+  font-weight:600;
+  color:#1E293B;
+}
+
+/* Isi kotak pilihan (ALL dan tanggal) */
+[class*="st-key-card_"] [data-baseweb="select"] div,
+[class*="st-key-card_"] [data-testid="stDateInput"] input{
+  font-size:1rem;
+}
+
+/* [UBAH] KPI card - Semua sejajar & posisi naik pas */
+.kpi  {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 1px 3px rgba(15,23,42,.06);
+  min-height: 155px;                /* KUNCI 1: Menentukan tinggi minimal agar semua kotak sama besar */
+  margin-top: -28px;                 /* KUNCI 2: Menaikkan posisi kotak sedikit ke atas */
+  display: flex !important;         /* KUNCI 3: Mengatur tata letak vertikal */
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.kpi-label { font-size: 1.1rem; font-weight: bold; color: #000000; margin-bottom: .35rem; }
+.kpi-value { font-size: 1.7rem; font-weight: 700; line-height: 1.2;  }
+.kpi-unit { font-size: 1.3rem; font-weight: 500; color: #64748B; }
+
+/* KUNCI 4: Mendorong teks keterangan bawah selalu rata di dasar kotak */
+.kpi-sub { 
+  font-size: .75rem; 
+  color: #64748B; 
+  margin-top: auto !important; 
+  padding-top: .45rem; 
+}
+
+.kpi-bar { height: 8px; background: #E2E8F0; border-radius: 999px; margin-top: .7rem; overflow: hidden; }
+.kpi-bar span { display: block; height: 100%; background: #10B981; border-radius: 999px; }
+.st-key-btn_extract button,.st-key-btn_transform button,.st-key-btn_load button{border:none;height:3.2rem;font-weight:700;border-radius:10px}
+.st-key-btn_extract button{background:#EE4D2D}
+.st-key-btn_transform button{background:#010101}
+.st-key-btn_load button{background:#10B981}
+.st-key-btn_extract button p,.st-key-btn_transform button p,.st-key-btn_load button p{color:#fff;font-size:1rem}
+.st-key-btn_extract button:hover,.st-key-btn_transform button:hover,.st-key-btn_load button:hover{opacity:.88}
+.etl-desc{font-size:.78rem;color:#64748B;margin-top:.3rem}
+.etl-count{font-size:.8rem;font-weight:600;color:#1E293B}
+
+.etl-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.etl-table th{text-align:left;color:#64748B;font-weight:600;border-bottom:1px solid #E2E8F0;padding:.55rem .5rem}
+.etl-table td{padding:.55rem .5rem;border-bottom:1px solid #F1F5F9;color:#1E293B}
+/* [BARU] Tabel transaksi dashboard bisa di-scroll, header tetap terlihat */
+.table-wrap{overflow-x:auto;max-height:420px;overflow-y:auto}
+.table-wrap .etl-table th{position:sticky;top:0;background:#fff}
+.badge{padding:.2rem .65rem;border-radius:99px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.b-high{background:#DCFCE7;color:#166534}
+.b-medium{background:#FEF3C7;color:#92400E}
+.b-low{background:#FEE2E2;color:#991B1B}
+.b-very{background:#E2E8F0;color:#334155}
+
+[data-testid="stFileUploaderDropzone"]{border:2px dashed #93C5FD;background:#EFF6FF;border-radius:12px;padding:2.2rem}
+
+.login-title{text-align:center;font-size:1.4rem;font-weight:700;color:#1E293B;margin:0}
+.login-sub{text-align:center;color:#64748B;font-size:.85rem;margin:.2rem 0 1rem 0}
+
+/* Jarak atas untuk baris filter (Delivery Date - Bundling) */
+[data-testid="stMain"] [data-testid="stHorizontalBlock"] {
+  margin-top: 1rem;
+}
+/* Memaksa warna angka pada kartu ke-4 menjadi #FF9B9B */
+[data-testid="stHorizontalBlock"] > div:nth-child(4) .kpi-value,
+[data-testid="stHorizontalBlock"] > div:nth-child(4) .kpi-value * {
+    color: #f04040 !important;
+}
