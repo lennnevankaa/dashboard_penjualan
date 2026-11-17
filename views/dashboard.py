@@ -467,18 +467,29 @@ def render():
     # Judul dipendekkan agar tidak turun ke 2 baris (penyebab kartu ini lebih tinggi dari yang lain)
     with d3, layout.card("dash_bundling", "Bundling / Promo Terlaris"):
         b = df.groupby("bundling")["sales"].sum().nlargest(4)
-        short = [(str(k)[:12] + "…") if len(str(k)) > 12 else str(k) for k in b.index]
+        full_names = [str(k) for k in b.index]
+        short = [(name[:12] + "…") if len(name) > 12 else name for name in full_names]
+
         fig = go.Figure(go.Bar(
-            x=short, y=b.values, marker_color=PURPLE,
-            customdata=[str(k) for k in b.index],
-            hovertemplate="<b>%{customdata}</b><br>Sales %{y:,.0f}<extra></extra>",
-            text=[f"{v / 1e6:,.0f}M" for v in b.values], textposition="outside",
+            x=full_names,
+            y=b.values,
+            marker_color=PURPLE,
+            hovertemplate="<b>%{x}</b><br>Sales %{y:,.0f}<extra></extra>",
+            text=[f"{v / 1e6:,.0f}M" for v in b.values],
+            textposition="outside",
+            cliponaxis=False,
         ))
         fig.update_yaxes(visible=False)
-        fig.update_xaxes(tickangle=-20, automargin=False)
+        fig.update_xaxes(
+            tickmode="array",
+            tickvals=full_names,
+            ticktext=short,
+            tickangle=-20,
+            automargin=False,
+        )
         fig.update_layout(bargap=0.35)
         row3_layout(fig, legend=False)
-        fig.update_layout(margin=dict(l=40, r=10, t=10, b=70))  # l lebih besar agar label pertama tidak terpotong
+        fig.update_layout(margin=dict(l=40, r=10, t=20, b=70))  # l lebih besar agar label pertama tidak terpotong
         show(fig)
 
     # Catatan: Silhouette Score sudah dipindah ke halaman Proses ETL
